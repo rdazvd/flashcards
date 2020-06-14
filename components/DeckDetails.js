@@ -39,7 +39,13 @@ const DeckDetails = ({ navigation, route }) => {
         >
           Add Card
         </StyledButton>
-        <StyledButton>Start Quiz</StyledButton>
+        <StyledButton
+          onPress={() =>
+            navigation.push('Quiz', { questions: deck.questions })
+          }
+        >
+          Start Quiz
+        </StyledButton>
       </View>
     </View>
   );

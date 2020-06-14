@@ -6,6 +6,7 @@ import DeckList from '../components/DeckList';
 import AddDeck from '../components/AddDeck';
 import AddCard from '../components/AddCard';
 import DeckDetails from '../components/DeckDetails';
+import Quiz from '../components/Quiz';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +34,10 @@ const AppNavigator = () => (
       <Stack.Screen 
         name='Add Card'
         component={AddCard}
+      />
+      <Stack.Screen 
+        name='Quiz'
+        component={Quiz}
       />
     </Stack.Navigator>
   </NavigationContainer>
