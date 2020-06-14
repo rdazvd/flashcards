@@ -5,18 +5,12 @@ import QuizResults from './QuizResults';
 import StyledButton from './StyledButton';
 
 const Quiz = ({ route, navigation }) => {
-  // const [questions, setQuestions] = React.useState([]);
   const [correctAnswers, setCorrectAnswers] = React.useState(0);
   const [incorrectAnswers, setIncorrectAnswers] = React.useState(0);
   const [currentQuestionIndex, setQuestionIndex] = React.useState(0);
   const [showQuestion, shouldShowQuestion] = React.useState(true);
   const [showResults, shouldShowResults] = React.useState(false);
   
-  // React.useEffect(() => {
-  //   if (route.params?.questions) {
-  //     setQuestions(route.params.questions);
-  //   }
-  // }, [route.params?.questions]);
   const { questions } = route.params;
 
   const getRemainginCount = () => {
@@ -51,12 +45,6 @@ const Quiz = ({ route, navigation }) => {
     shouldShowQuestion(true);
     shouldShowResults(false);
   };
-  // return (
-  //   <View>
-  //     <Text>{JSON.stringify(questions)}</Text>
-  //   <Text>{`${showResults}`}</Text>
-  //   </View>
-  // );
 
   return !showResults ? (
     <View style={styles.container}>
