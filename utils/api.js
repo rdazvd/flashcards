@@ -17,11 +17,11 @@ export const getDecks = async () => {
   } 
 };
 
-export const getDeck = async id => {
+export const getDeck = async title => {
   try {
     const storeResults = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
 
-    return JSON.parse(storeResults)[id];
+    return JSON.parse(storeResults)[title];
   } catch (err) {
     console.log(err);
   }

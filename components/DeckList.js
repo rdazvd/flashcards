@@ -27,7 +27,7 @@ const DeckList = ({ navigation }) => {
       {Object.values(decks).map(deck => (
         <TouchableOpacity
           key={deck.title}
-          onPress={() => {}}
+          onPress={() => navigation.navigate('Deck Details', { title: deck.title })}
         >
           <Deck deck={deck} />
         </TouchableOpacity>

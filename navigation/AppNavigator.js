@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import DeckList from '../components/DeckList';
 import AddDeck from '../components/AddDeck';
+import AddCard from '../components/AddCard';
+import DeckDetails from '../components/DeckDetails';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,6 +24,15 @@ const AppNavigator = () => (
       <Stack.Screen 
         name='Home'
         component={TabNavigator}
+      />
+      <Stack.Screen 
+        name='Deck Details'
+        component={DeckDetails}
+        options={({ route }) => ({ title: route.params.title}) }
+      />
+      <Stack.Screen 
+        name='Add Card'
+        component={AddCard}
       />
     </Stack.Navigator>
   </NavigationContainer>
