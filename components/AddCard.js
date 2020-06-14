@@ -20,7 +20,6 @@ const AddCard = ({ navigation, route }) => {
     const deckTitle = route.params.title;
 
     await addCardToDeck(deckTitle, card);
-    navigation.goBack();
   };
 
   return (
@@ -46,7 +45,13 @@ const AddCard = ({ navigation, route }) => {
       </View>
       <View style={styles.block}>
         <StyledButton
-          onPress={() => handleSubmit()}
+          onPress={async () => {
+            await handleSubmit();
+            setQuestion('');
+            setAnswer('');
+            navigation.navigate('Deck Details', { title: route.params.title });
+          }}
+          disabled={question === '' || answer === ''}
         >
           Submit
         </StyledButton>

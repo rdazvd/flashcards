@@ -9,12 +9,16 @@ const DeckDetails = ({ navigation, route }) => {
   const [ready, setReady] = React.useState(false);
 
   React.useEffect(() => {
-    (async () => {
-      const response = await getDeck(route.params.title);
-      retrieveDeck(response);
-      setReady(true);
-    })()
-  }, []);
+    if (route.params?.title) {
+      (async () => {
+        const response = await getDeck(route.params.title);
+        retrieveDeck(response);
+        setReady(true);
+      })();
+
+      return () => setReady(false);
+    }
+  }, [route.params?.title]);
 
   if (!ready) {
     return (
@@ -37,7 +41,6 @@ const DeckDetails = ({ navigation, route }) => {
         </StyledButton>
         <StyledButton>Start Quiz</StyledButton>
       </View>
-      {/* <Text>{JSON.stringify(deck)}</Text> */}
     </View>
   );
 };

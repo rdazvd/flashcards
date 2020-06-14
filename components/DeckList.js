@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { getDecks } from '../utils/api';
+import { getDecks, resetData } from '../utils/api';
 import Deck from './Deck';
 
 const DeckList = ({ navigation }) => {
@@ -12,7 +12,10 @@ const DeckList = ({ navigation }) => {
       const response = await getDecks();
       retrieveDecks(response);
       setReady(true);
-    })()
+      // await resetData();
+    })();
+
+    return () => setReady(false);
   }, []);
 
   if (!ready) {
