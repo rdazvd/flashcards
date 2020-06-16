@@ -49,7 +49,7 @@ const AddCard = ({ navigation, route }) => {
             await handleSubmit();
             setQuestion('');
             setAnswer('');
-            navigation.navigate('Deck Details', { title: route.params.title });
+            navigation.push('Deck Details', { title: route.params.title });
           }}
           disabled={question === '' || answer === ''}
         >

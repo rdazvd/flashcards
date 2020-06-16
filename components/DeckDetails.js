@@ -46,6 +46,13 @@ const DeckDetails = ({ navigation, route }) => {
         >
           Start Quiz
         </StyledButton>
+        <StyledButton
+          onPress={() =>
+            navigation.push('Home', { screen: 'Decks' })
+          }
+        >
+          Back to Deck List
+        </StyledButton>
       </View>
     </View>
   );

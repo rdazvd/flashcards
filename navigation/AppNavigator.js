@@ -29,11 +29,12 @@ const AppNavigator = () => (
       <Stack.Screen 
         name='Deck Details'
         component={DeckDetails}
-        options={({ route }) => ({ title: route.params.title}) }
+        options={{ headerShown: false }}
       />
       <Stack.Screen 
         name='Add Card'
         component={AddCard}
+        options={{ headerShown: false }}
       />
       <Stack.Screen 
         name='Quiz'
