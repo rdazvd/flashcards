@@ -14,7 +14,7 @@ you can use an Android device with the [Expo app](https://play.google.com/store/
 
 ## Usage
 
-The initial screen has a list of questions. You can tap on one to see more details, start a quiz or start add a new question card. On the bottom tab, you can access a menu to add a new deck to the list. 
+The initial screen has a list of card decks. You can tap on one to see more details, start a quiz or add a new question card. On the bottom tab, you can access a menu to add a new deck to the list.
 
-Once a quiz is started, you can tap the button to see the answer and mark your guess as correct or incorrect. You will see your score at the final of the quiz.
+Once a quiz is started, you will see a question. You can tap the "See Answer" button to see the answer and mark your guess as correct or incorrect. Marking your guess will lead you to the next question. You will see your score at the final of the quiz.
 
