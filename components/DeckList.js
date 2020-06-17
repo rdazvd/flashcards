@@ -1,5 +1,11 @@
 import React from 'react';
-import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  FlatList,
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity 
+} from 'react-native';
 import { getDecks, resetData } from '../utils/api';
 import Deck from './Deck';
 
@@ -25,18 +31,22 @@ const DeckList = ({ navigation }) => {
       </View>
     );
   }
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {Object.values(decks).map(deck => (
-        <TouchableOpacity
-          key={deck.title}
-          onPress={() => navigation.navigate('Deck Details', { title: deck.title })}
-        >
-          <Deck deck={deck} />
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
-  )
+    <View style={styles.container}>
+      <FlatList
+        data={Object.values(decks)}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            key={item}
+            onPress={() => navigation.navigate('Deck Details', { title: item.title })}
+          >
+            <Deck deck={item} />
+          </TouchableOpacity>
+        )}
+      />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
