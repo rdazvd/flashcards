@@ -1,8 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { 
+  clearLocalNotification,
+  setLocalNotification 
+} from '../utils/helpers';
 import QuizCard from './QuizCard';
 import QuizResults from './QuizResults';
 import StyledButton from './StyledButton';
+
 
 const Quiz = ({ route, navigation }) => {
   const [correctAnswers, setCorrectAnswers] = React.useState(0);
@@ -45,6 +50,12 @@ const Quiz = ({ route, navigation }) => {
     shouldShowQuestion(true);
     shouldShowResults(false);
   };
+
+  if (showResults) {
+    clearLocalNotification()
+      .then(setLocalNotification());
+
+  }
   
   if (questions.length > 0) {
     return !showResults ? (
