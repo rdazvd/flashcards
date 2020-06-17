@@ -18,7 +18,7 @@ const DeckDetails = ({ navigation, route }) => {
 
       return () => setReady(false);
     }
-  }, [route.params?.title]);
+  }, []);
 
   if (!ready) {
     return (

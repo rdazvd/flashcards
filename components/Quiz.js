@@ -45,47 +45,59 @@ const Quiz = ({ route, navigation }) => {
     shouldShowQuestion(true);
     shouldShowResults(false);
   };
-
-  return !showResults ? (
-    <View style={styles.container}>
-      <QuizCard 
-        card={questions[currentQuestionIndex]}
-        showQuestion={showQuestion}
-      />
-      <View style={styles.block}>
-        <Text>{getRemainginCount()}</Text>
-        <StyledButton onPress={() => toggleQuestionAnswer()}>
-          <Text>{`See ${showQuestion ? 'Answer' : 'Question'}`}</Text>
-        </StyledButton>
-      </View>
-      {!showQuestion && (
-        <View>
-          <Text>Mark your guess as correct or incorrect:</Text>
-          <StyledButton onPress={() => {
-            recordAnswer(true);
-            toggleQuestionAnswer();
-          }}>
-            <Text>Correct</Text>
-          </StyledButton>
-          <StyledButton onPress={() => {
-            recordAnswer(false);
-            toggleQuestionAnswer();
-          }}>
-            <Text>Incorrect</Text>
+  
+  if (questions.length > 0) {
+    return !showResults ? (
+      <View style={styles.container}>
+        <QuizCard 
+          card={questions[currentQuestionIndex]}
+          showQuestion={showQuestion}
+        />
+        <View style={styles.block}>
+          <Text>{getRemainginCount()}</Text>
+          <StyledButton onPress={() => toggleQuestionAnswer()}>
+            <Text>{`See ${showQuestion ? 'Answer' : 'Question'}`}</Text>
           </StyledButton>
         </View>
-      )}
-    </View>
-  ) : (
-    <View>
-      <QuizResults
-        correctAnswerCount={correctAnswers}
-        incorrectAnswerCount={incorrectAnswers}
-        restartQuiz={restartQuiz}
-        navigation={navigation}
-      />
-    </View>
-  );
+        {!showQuestion && (
+          <View>
+            <Text>Mark your guess as correct or incorrect:</Text>
+            <StyledButton onPress={() => {
+              recordAnswer(true);
+              toggleQuestionAnswer();
+            }}>
+              <Text>Correct</Text>
+            </StyledButton>
+            <StyledButton onPress={() => {
+              recordAnswer(false);
+              toggleQuestionAnswer();
+            }}>
+              <Text>Incorrect</Text>
+            </StyledButton>
+          </View>
+        )}
+      </View>
+    ) : (
+      <View>
+        <QuizResults
+          correctAnswerCount={correctAnswers}
+          incorrectAnswerCount={incorrectAnswers}
+          restartQuiz={restartQuiz}
+          navigation={navigation}
+        />
+      </View>
+    );
+  } else {
+    return (
+      <View style={styles.container}>
+        <Text>You do not have any question cards yet</Text>
+        <StyledButton onPress={() => navigation.navigate('Deck Details')}>
+          Go Back
+        </StyledButton>
+      </View>
+    );
+  }
+  
 };
 
 const styles = StyleSheet.create({
@@ -93,8 +105,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 50
+    justifyContent: 'center'
   },
   block: {
     marginBottom: 20,

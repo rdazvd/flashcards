@@ -44,6 +44,7 @@ const DeckList = ({ navigation }) => {
             <Deck deck={item} />
           </TouchableOpacity>
         )}
+        keyExtractor={(item) => item.name}
       />
     </View>
   );

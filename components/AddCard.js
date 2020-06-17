@@ -23,7 +23,7 @@ const AddCard = ({ navigation, route }) => {
   };
 
   return (
-    <View style={StyleSheet.container}>
+    <View style={styles.container}>
       <View style={styles.block}>
         <Text style={styles.title}>Add a question</Text>
       </View>
@@ -62,10 +62,13 @@ const AddCard = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 32,
     paddingLeft: 16,
     paddingRight: 16,
     paddingBottom: 16,
-    justifyContent: 'space-around'
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 600
   },
   block: {
     marginBottom: 20,
